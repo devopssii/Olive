@@ -29,7 +29,7 @@ def dummy_inputs(model):
         sequence_length,
         past_sequence_length,
         max_sequence_length,
-        use_fp16=False,
+        use_fp16=True,
         use_gqa=False,
         engine="pt",
         return_dict=True,
@@ -76,7 +76,7 @@ class RandomDataLoader:
         past_seq_len: int,
         max_seq_len: int,
         engine: str = "pt",
-        use_fp16: bool = False,
+        use_fp16: bool = True,
         use_gqa: bool = False,
     ):
         self.model_id = model_id
