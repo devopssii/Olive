@@ -20,7 +20,7 @@ config: "PhiConfig" = AutoConfig.from_pretrained(model_id, trust_remote_code=Tru
 def dummy_inputs(model):
     """Get dummy inputs for merged decoder model with past_key_values."""
     batch_size, sequence_length, past_sequence_length = 2, 8, config.num_hidden_layers
-    max_sequence_length = 512
+    max_sequence_length = 2048
 
     return get_merged_sample_with_past_kv_inputs(
         config,
@@ -61,7 +61,7 @@ def get_io_config(model):
 
 def create_dataloader(data_dir, batch_size, *args, **kwargs):
     sequence_length, past_sequence_length = 8, config.num_hidden_layers
-    max_sequence_length = 512
+    max_sequence_length = 2048
     model_framework = kwargs.get("model_framework", Framework.PYTORCH)
     engine = "ort" if model_framework == Framework.ONNX else "pt"
 
